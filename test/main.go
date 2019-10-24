@@ -18,5 +18,13 @@ func main() {
 	}
 	fmt.Printf("%s\n", s)
 
-	fmt.Printf("%U", '😀')
+	for i, v := range s {
+		fmt.Printf("%v:%v\n", i, v)
+	}
+
+	fmt.Printf("%v\n", len(s))
+	fmt.Printf("%+q\n", s)
+	r := []rune(s)
+	fmt.Printf("r:%v\n", r)
+	fmt.Printf("%c\n", r[0])
 }
