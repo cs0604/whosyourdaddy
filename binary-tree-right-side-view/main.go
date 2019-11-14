@@ -36,6 +36,9 @@ func buildTree(input []string) *TreeNode {
 		}
 	}
 	for i := 0; i < len(arr)/2; i++ {
+		if arr[i] == nil {
+			continue
+		}
 		if i*2+1 < len(arr) {
 			arr[i].Left = arr[i*2+1]
 		}
