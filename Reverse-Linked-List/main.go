@@ -19,11 +19,11 @@ func reverseList(head *ListNode) *ListNode {
 }
 
 func reverse(head *ListNode) *ListNode {
-	if head.Next == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 	p := head.Next
-	ret := reverseList(p)
+	ret := reverse(p)
 	p.Next = head
 	return ret
 }
