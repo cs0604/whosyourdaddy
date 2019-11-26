@@ -12,19 +12,50 @@ func unquoteCodePoint(s string) (string, error) {
 }
 func main() {
 
-	s, err := unquoteCodePoint("\\U1f600")
-	if err != nil {
-		// handle error
-	}
-	fmt.Printf("%s\n", s)
+	N := 3
 
-	for i, v := range s {
-		fmt.Printf("%v:%v\n", i, v)
+	for k := 0; k <= N*2-2; k++ {
+		for i := 0; i < N; i++ {
+			if i > k {
+				break
+			}
+			for j := 0; j < N; j++ {
+				if i+j > k {
+					break
+				}
+				if i+j == k {
+					fmt.Print(i, ",", j, "  ")
+				}
+			}
+		}
+		fmt.Println()
 	}
 
-	fmt.Printf("%v\n", len(s))
-	fmt.Printf("%+q\n", s)
-	r := []rune(s)
-	fmt.Printf("r:%v\n", r)
-	fmt.Printf("%c\n", r[0])
+	fmt.Println("\n\n\n")
+
+	for k := 0; k < N; k++ {
+
+		i := 0
+		j := k
+		for i < N && j >= 0 {
+			fmt.Print(i, ",", j, "  ")
+			i++
+			j--
+		}
+
+		fmt.Println()
+
+	}
+
+	for k := 1; k < N; k++ {
+		i := k
+		j := N - 1
+		for i < N && j >= k {
+			fmt.Print(i, ",", j, "  ")
+			i++
+			j--
+		}
+		fmt.Println()
+	}
+
 }
