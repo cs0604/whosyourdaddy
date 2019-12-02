@@ -73,11 +73,11 @@ func partition2(nums []int, lo int, hi int) int {
 			hi--
 		}
 		nums[lo] = nums[hi]
-		lo++
 		for lo < hi && nums[lo] <= pivot {
 			lo++
 		}
 		nums[hi] = nums[lo]
+
 	}
 	nums[lo] = pivot
 	return lo
@@ -93,13 +93,12 @@ func findKthLargest(nums []int, k int) int {
 	kLargePos := len(nums) - k
 
 	if pos == kLargePos {
-		log.Printf("%+v,%v", nums, k)
 		return nums[pos]
 	}
 
 	if pos > kLargePos {
 		//find in left part
-		return findKthLargest(nums[:pos], k-pos-1)
+		return findKthLargest(nums[:pos], pos-kLargePos)
 	}
 	//find in right part
 	return findKthLargest(nums[pos+1:], k)

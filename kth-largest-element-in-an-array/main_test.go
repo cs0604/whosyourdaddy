@@ -75,6 +75,14 @@ func Test_findKthLargest(t *testing.T) {
 			},
 			want: 5,
 		},
+		{
+			name: "5",
+			args: args{
+				nums: []int{7, 6, 5, 4, 3, 2, 1},
+				k:    2,
+			},
+			want: 6,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
