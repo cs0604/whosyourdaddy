@@ -3,10 +3,8 @@ package palindromic_substrings
 func countSubstrings(s string) int {
 
 	var sum int
-	for j := 0; j < len(s); j++ {
-		for i := 1; i <= len(s)-j; i++ {
-			sum += helper(s[j : j+i])
-		}
+	for i := 0; i < len(s); i++ {
+		sum += helper(s, i)
 	}
 
 	return sum
@@ -14,17 +12,23 @@ func countSubstrings(s string) int {
 
 // abcabc
 
-func helper(cur string) int {
-	i := 0
-	j := len(cur) - 1
+func helper(str string, pos int) int {
 
-	for i < j && cur[i] == cur[j] {
-		i++
-		j--
+	cnt := 1
+
+	//回文长度是奇数
+	for i, j := pos-1, pos+1; i >= 0 && j < len(str) && str[i] == str[j]; {
+		i--
+		j++
+		cnt++
 	}
 
-	if i >= j {
-		return 1
+	//回文长度是偶数
+	for i, j := pos, pos+1; i >= 0 && j < len(str) && str[i] == str[j]; {
+		i--
+		j++
+		cnt++
 	}
-	return 0
+
+	return cnt
 }
