@@ -31,8 +31,6 @@ func main() {
 		fmt.Println()
 	}
 
-	fmt.Println("\n\n\n")
-
 	for k := 0; k < N; k++ {
 
 		i := 0

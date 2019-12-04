@@ -8,8 +8,8 @@ func f() {
 	<-c
 }
 
-func main() {
-	go f()
-	c <- 0
-	print(a)
-}
+//func main() {
+//	go f()
+//	c <- 0
+//	print(a)
+//}
