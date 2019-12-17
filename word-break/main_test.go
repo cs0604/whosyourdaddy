@@ -20,6 +20,30 @@ func Test_wordBreak(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "2",
+			args: args{
+				s:        "applepenapple",
+				wordDict: []string{"apple", "pen"},
+			},
+			want: true,
+		},
+		{
+			name: "3",
+			args: args{
+				s:        "catsandog",
+				wordDict: []string{"cats", "dog", "sand", "and", "cat"},
+			},
+			want: false,
+		},
+		{
+			name: "4",
+			args: args{
+				s:        "aaaaaaa",
+				wordDict: []string{"aaaa", "aa"},
+			},
+			want: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
