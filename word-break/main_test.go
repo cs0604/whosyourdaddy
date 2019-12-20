@@ -47,7 +47,7 @@ func Test_wordBreak(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := wordBreak(tt.args.s, tt.args.wordDict); got != tt.want {
+			if got := wordBreak2(tt.args.s, tt.args.wordDict); got != tt.want {
 				t.Errorf("wordBreak() = %v, want %v", got, tt.want)
 			}
 		})

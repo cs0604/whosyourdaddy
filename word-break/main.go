@@ -63,3 +63,25 @@ func canBreak(s string, root *trie, subres map[string]int) bool {
 	subres[s] = -1
 	return false
 }
+
+func wordBreak2(s string, wordDict []string) bool {
+
+	var wmap = make(map[string]bool)
+	for _, word := range wordDict {
+		wmap[word] = true
+	}
+	var dp = make([]bool, len(s)+1)
+	dp[0] = true
+
+	for i := 1; i <= len(s); i++ {
+		for j := 0; j < i; j++ {
+			cur := s[j:i]
+			if dp[j] && wmap[cur] {
+				dp[i] = true
+				break
+			}
+		}
+	}
+
+	return dp[len(s)]
+}
