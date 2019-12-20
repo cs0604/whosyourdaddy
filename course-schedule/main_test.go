@@ -43,10 +43,9 @@ func Test_canFinish(t *testing.T) {
 				prerequisites: [][]int{
 					{1, 0},
 					{0, 2},
-					{2, 1},
 				},
 			},
-			want: false,
+			want: true,
 		},
 	}
 	for _, tt := range tests {
