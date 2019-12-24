@@ -8,6 +8,10 @@ func max(a, b int) int {
 }
 
 func lengthOfLIS(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
 	var dp = make([]int, len(nums))
 
 	var curIndex int
@@ -42,6 +46,9 @@ func lengthOfLIS(nums []int) int {
 }
 
 func lengthOfLIS2(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
 	var res int
 	var dp = make([]int, len(nums))
 	dp[0] = 1
