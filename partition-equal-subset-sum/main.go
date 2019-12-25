@@ -4,10 +4,7 @@ func canPartition(nums []int) bool {
 
 	sum := 0
 
-	var base [101]int
-
 	for i := 0; i < len(nums); i++ {
-		base[nums[i]]++
 		sum += nums[i]
 	}
 
@@ -20,12 +17,10 @@ func canPartition(nums []int) bool {
 	var dp = make([]bool, res+1)
 	dp[0] = true
 
-	var tmp = []int{0}
-
-	for i := 0; i < len(tmp); i++ {
-		for j := 1; j < 101; j++ {
-			for base[j] > 0 {
-
+	for i := 0; i < len(nums); i++ {
+		for j := res; j > 0; j-- {
+			if j >= nums[i] {
+				dp[j] = dp[j] || dp[j-nums[i]]
 			}
 		}
 	}
