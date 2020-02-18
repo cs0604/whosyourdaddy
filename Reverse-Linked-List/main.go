@@ -8,6 +8,27 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func reverseList2(head *ListNode) *ListNode {
+	var pre, next *ListNode
+	cur := head
+	for cur != nil {
+		next = cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = next
+	}
+	return pre
+}
+
+func helper(pre, cur *ListNode) *ListNode {
+	if cur == nil {
+		return pre
+	}
+	p := cur.Next
+	cur.Next = pre
+	return helper(cur, p)
+}
+
 func reverseList(head *ListNode) *ListNode {
 
 	if head == nil {
