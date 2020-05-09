@@ -9,46 +9,34 @@ type ListNode struct {
 //O（1）空间需要逆置单链表的一部分再比较
 func isPalindrome(head *ListNode) bool {
 
-	count := 0
-
-	for p := head; p.Next != nil; p = p.Next {
-		count++
-	}
-
-	if count == 0 {
-		return false
-	}
-
-	if count == 1 {
+	if head == nil || head.Next == nil {
 		return true
 	}
 
-	reverseCnt := count / 2
+	fast, slow := head, head
 
-	var p, q, r *ListNode
+	pre := slow
 
-	p = head
-	q = p.Next
-	r = q.Next
-
-	//逆序单链表
-	for i := 0; i < reverseCnt-1; i++ {
-		q.Next = p
-		p = q
-		q = r
-		r = r.Next
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		pre = slow
+		slow = slow.Next
 	}
 
-	head.Next = nil
-
-	//比较p1,p2两个链表的值是否相等
-	p1 := p
-	var p2 *ListNode
-	if count%2 == 0 {
-		p2 = q
-	} else {
-		p2 = r
+	//把第一个截断
+	pre.Next = nil
+	second := slow
+	if fast != nil {
+		second = slow.Next
 	}
+
+	//reverse second
+	second = reverse(second)
+
+	//compare
+
+	p1 := head
+	p2 := second
 
 	for p1 != nil && p2 != nil {
 		if p1.Val != p2.Val {
@@ -58,6 +46,19 @@ func isPalindrome(head *ListNode) bool {
 		p2 = p2.Next
 	}
 
-	return false
+	return p1 == nil && p2 == nil
 
+}
+
+func reverse(head *ListNode) *ListNode {
+	var pre, next *ListNode
+	current := head
+
+	for current != nil {
+		next = current.Next
+		current.Next = pre
+		pre = current
+		current = next
+	}
+	return pre
 }
